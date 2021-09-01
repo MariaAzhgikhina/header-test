@@ -424,7 +424,7 @@ body {
 
 @-webkit-keyframes fade {
   from {
-    opacity: 0.8;
+    opacity: 0.6;
   }
 
   to {
@@ -434,7 +434,7 @@ body {
 
 @keyframes fade {
   from {
-    opacity: 0.8;
+    opacity: 0.6;
   }
 
   to {
@@ -585,8 +585,8 @@ body {
   padding-right: 52px;
 }
 
-.box__breakfast::after {
-  border-right: 1px solid rgba(30, 23, 68, 0.12);
+.box__breakfast:hover {
+  text-decoration: underline;
 }
 
 .box__news {

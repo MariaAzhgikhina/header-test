@@ -42,3 +42,8 @@ document.querySelector('.box__left').addEventListener('click', () => {
     previousSlide();
     counterElem.textContent = slideIndex.toString();
 });
+
+setInterval(() => {
+    nextSlide();  
+    counterElem.textContent = slideIndex.toString();
+}, 7000)
