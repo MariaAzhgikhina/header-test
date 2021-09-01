@@ -1,51 +1,44 @@
-let screenWidth = window.screen.width;
+let slideIndex = 1;
 let counterElem = document.querySelector('.box__counter_current');
-let counter = 1;
-let offline = 0;
-const sliderLine = document.querySelector('.slider__line');
 
-window.addEventListener("resize", () => {
-        offline = 0;
-        counter = 1;
-        screenWidth = window.screen.width;
-        sliderLine.style.left = -offline + 'px';
-        counterElem.textContent = counter.toString();
-    });
+showSlides(slideIndex);
 
-function nextImage(){
-    offline = offline + screenWidth;
-    counter += 1;
-    if (offline >= screenWidth*4){
-        offline = 0;
-        counter = 1;
+function nextSlide() {
+    showSlides(slideIndex += 1);
+}
+
+function previousSlide() {
+    showSlides(slideIndex -= 1);  
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+
+    let slides = document.querySelectorAll(".slider__item");
+    
+    if (n > slides.length) {
+        slideIndex = 1;
     }
-    sliderLine.style.left = -offline + 'px';
-    counterElem.textContent = counter.toString();
-}
-function prevImage(){
-    offline = offline - screenWidth;
-    counter -= 1;
-    if (offline < 0){
-        offline = screenWidth*3;
-        counter = 4;
+    if (n < 1) {
+        slideIndex = slides.length;
     }
-    sliderLine.style.left = -offline + 'px';
-    counterElem.textContent = counter.toString();
-}
 
-if (screenWidth>1920){
-    screenWidth = 1920;
-}
+    for (let slide of slides) {
+        slide.style.display = "none";
+    }
 
-setInterval(() => { 
-    nextImage();
-}, 5000);
+    slides[slideIndex - 1].style.display = "block";    
+}
 
 document.querySelector('.box__right').addEventListener('click', () => {
-    nextImage();   
+    nextSlide();  
+    counterElem.textContent = slideIndex.toString();
 });
 
 document.querySelector('.box__left').addEventListener('click', () => {
-    prevImage();
+    previousSlide();
+    counterElem.textContent = slideIndex.toString();
 });
-

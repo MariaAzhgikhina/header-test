@@ -207,21 +207,31 @@ body{
     }
 }
 .slider {
-    height: 100%;
     z-index: 1;
-    overflow: hidden;
-    &__line{
-        display: flex;
-        position: relative;
-        height: 100%;
-        left: 0;
-        transition: all ease 1s;
-    }
-    &__bg {
-        width: 100%;
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+    height: 765px;
+    
+    &__bg{
         object-fit: cover;
+        width: 100%;
+        height: 765px;
+    }
+    &__item{
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+    @keyframes fade {
+        from {
+            opacity: 0.8
+        }
+        to {
+            opacity: 1
+        }
     }
 }
+
 
 .box {
     position: absolute;
@@ -537,6 +547,12 @@ body{
         font-size: 12px;
         height: 600px;
     }
+    .slider{
+        height: 600px;
+        &__bg{
+            height: 600px;
+        }
+    }
     .box{
         left: 35px;
         &__title {
@@ -594,9 +610,7 @@ body{
 }
 
 @media screen and (max-width: 480px){
-    .slider{
-        height: 200px;
-    }
+
     .top{
         &__settings{
             flex-direction: column;
@@ -625,6 +639,12 @@ body{
         z-index: 0;
         margin-bottom: 20px;
         height: auto;
+    }
+    .slider{
+        height: 200px;
+        &__bg{
+            height: 200px;
+        }
     }
     .box{
         position: static;
